@@ -18,18 +18,18 @@
     <ClCompile Include="BagAdt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BagInterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ArrayBag.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BagInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ArrayBag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

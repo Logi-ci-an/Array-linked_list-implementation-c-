@@ -1,33 +1,53 @@
 #pragma once
 #include "BagInterface.h"
+#include<iostream>
+using namespace std;
 template<class T>
 class ArrayBag :public BagInterface<T>
 {
 private:
 	T items[DefaultCount];
-	virtual int getIndexOf(T item) {
-		for (int i = 0; i < this->CurrentCount; i++) {
-			if (item == items[i])
-				return i;
+	int MAxcount;
+	virtual int getIndexOf(const T &item,int SearchIndex =0)const {
+		/*int result = -1;
+		if (SearchIndex < this->CurrentCount) {
+			if (item == this->items[SearchIndex])
+				return SearchIndex;
+			else
+				return getIndexOf(item, SearchIndex + 1);
 		}
-		return -1;
+		return result;*/
+		if (SearchIndex >= this->CurrentCount)
+			return -1;
+		else if (this->items[SearchIndex] == item)
+			return SearchIndex;
+		return getIndexOf(item, SearchIndex + 1);
 	}
 
 
 public:
-	virtual int GetCurrentSize() {
+	ArrayBag() {
+		MAxcount = DefaultCount;
+	}
+	ArrayBag(const ArrayBag& A) {
+		for (int i = 0; i < A.CurrentCount; i++) {
+			this->Add(A[i]);
+		}
+		MAxcount = DefaultCount;
+	}
+	virtual int GetCurrentSize()const {
 		return this->CurrentCount;
 	}
-	virtual bool IsEmpty() {
+	virtual bool IsEmpty()const {
 		return this->CurrentCount;
 	}
-	virtual	bool Add(T item) {
+	virtual	bool Add(const T item) {
 		if (this->CurrentCount == this->MAxcount)
 			return false;
-		items[this->CurrentCount++] == item;
+		items[this->CurrentCount++] = item;
 		return true;
 	}
-	virtual bool Remove(T item) {
+	virtual bool Remove(const T item) {
 		if (!this->Contains(item))
 			return false;
 		int index = getIndexOf(item);
@@ -40,22 +60,23 @@ public:
 	virtual void Clear() {
 		this->CurrentCount = 0;
 	}
-	virtual int GetFrequencyOf(T item) {
-		int result=0;
-
-		for (int i = 0; i < this->CurrentCount; i++) {
-			if (item == items[i])
-				result++;
-		}
-		return result;
+	virtual int GetFrequencyOf(const T &item,int Start=0)const {
+		if (Start == this->CurrentCount)
+			return 0;
+		if (item == this->items[Start])
+			return 1 + GetFrequencyOf(item, Start + 1);
+		return GetFrequencyOf(item, Start + 1);
 	}
-	virtual bool Contains(T item) {
+	virtual bool Contains(const T &item)const {
 		if (getIndexOf(item) >= 0)
 			return true;
 		return false;
 	}
-	//virtual vector ToVector() {
-		
-//	}
+	virtual vector<T> ToVector()const {
+		vector<T>result;
+		for (int i = 0; i < this->CurrentCount; i++) {
+			result.push_back(this->items[i]);
+		}
+		return result;
+	}
 };
-

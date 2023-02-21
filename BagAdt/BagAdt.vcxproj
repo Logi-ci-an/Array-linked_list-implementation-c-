@@ -127,13 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ArrayBag.cpp" />
     <ClCompile Include="BagAdt.cpp" />
-    <ClCompile Include="BagInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArrayBag.h" />
     <ClInclude Include="BagInterface.h" />
+    <ClInclude Include="List.h" />
+    <ClInclude Include="Node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

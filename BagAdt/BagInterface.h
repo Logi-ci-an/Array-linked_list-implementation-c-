@@ -9,21 +9,18 @@ template<class T>
 class BagInterface//abstract class
 {
 protected:
-	virtual int getIndexOf(T) = 0;
-	int MAxcount;
 	int CurrentCount;
 public:
 	BagInterface() {
-		MAxcount = DefaultCount;
 		CurrentCount = 0;
 	}
-	virtual int GetCurrentSize() = 0;
-	virtual bool IsEmpty() = 0;
-	virtual	bool Add(T) = 0;
-	virtual bool Remove(T) = 0;
+	virtual int GetCurrentSize()const = 0;
+	virtual bool IsEmpty()const = 0;
+	virtual	bool Add(const T) = 0;
+	virtual bool Remove(const T) = 0;
 	virtual void Clear() = 0;
-	virtual int GetFrequencyOf(T) = 0;
-	virtual bool Contains(T) = 0;
-//	virtual vector ToVector()final = 0;
+	virtual int GetFrequencyOf(const T&,int)const = 0;
+	virtual bool Contains(const T&)const = 0;
+	virtual vector<T> ToVector()const = 0;
 };
 
