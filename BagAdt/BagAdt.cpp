@@ -14,6 +14,7 @@ int main() {
 	A1.Add(4);
 	A1.Add(6);
 
+
 	vector<int>v1=A1.ToVector();
 	for (auto i : v1) {
 		cout << i << " ";
@@ -50,6 +51,13 @@ int main() {
 	lista.Add(7);
 	lista.Add(3);
 
+	List<int>lista2(lista);
+
+	v1 = lista2.ToVector();
+	for (auto i : v1) {
+		cout << i << " ";
+	}
+
 	cout<<lista.Contains(8)<<endl;
 	cout << lista.GetFrequencyOf(7) << endl;
 
@@ -66,4 +74,13 @@ int main() {
 	for (auto i : v1) {
 		cout << i << " ";
 	}
+
+	cout << "                     " << endl;
+
+
+	v1 = lista2.ToVector();
+	for (auto i : v1) {
+		cout << i << " ";
+	}
+
 }

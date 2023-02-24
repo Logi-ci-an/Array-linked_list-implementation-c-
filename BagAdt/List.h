@@ -20,6 +20,18 @@ public:
 		this->CurrentCount = 0;
 		HEAD = nullptr;
 	}
+
+	List(const List<T>& Copy) {
+			this->HEAD = nullptr;
+			this->CurrentCount = 0;
+			Node < T >  *NEW_Node = Copy.HEAD;
+			while (NEW_Node != nullptr) {
+				this->Add(NEW_Node->GetData());
+				NEW_Node = NEW_Node->GetNext();
+			}
+		
+	}
+
 	virtual bool Add(const T item) {
 		Node<T>* NewItem = new Node<T>;
 		NewItem->SetData(item);
