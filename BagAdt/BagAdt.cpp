@@ -5,82 +5,43 @@
 using namespace std;
 
 int main() {
-	ArrayBag<int>A1;
-
-	A1.Add(5);
-	A1.Add(4);
-	A1.Add(6);
-	A1.Add(5);
-	A1.Add(4);
-	A1.Add(6);
-
-
-	vector<int>v1=A1.ToVector();
-	for (auto i : v1) {
-		cout << i << " ";
-	}
-	cout << endl;
-
-	A1.Remove(4);
-
-	v1 = A1.ToVector();
-	for (auto i : v1) {
-		cout << i << " ";
-	}
-	cout << endl;
-	cout << A1.GetFrequencyOf(5) << endl;
-	cout << A1.GetCurrentSize() << endl;
-
-	A1.Clear();
-
-
-	cout << endl<<endl;
-	v1 = A1.ToVector();
-	for (auto i : v1) {
-		cout << i << " ";
-	}
-
-
-
 	cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
 	List<int>lista;
 
-	lista.Add(5);
-	lista.Add(7);
+	lista.Add(9);
 	lista.Add(8);
-	lista.Add(7);
-	lista.Add(3);
+	lista.Add(4);
+	lista.Add(1);
+	lista.Add(-3);
 
-	List<int>lista2(lista);
-
-	v1 = lista2.ToVector();
-	for (auto i : v1) {
-		cout << i << " ";
-	}
-
-	cout<<lista.Contains(8)<<endl;
-	cout << lista.GetFrequencyOf(7) << endl;
-
-	cout << endl << endl;
-	v1 = lista.ToVector();
-	for (auto i : v1) {
-		cout << i << " ";
+	vector<int>V1 = lista.ToVector();
+	int size = lista.GetCurrentSize();
+	for (int i = 0; i < size; i++) {
+			cout << V1[i] << " ";
 	}
 	cout << endl;
 
-	lista.Remove(5);
-	cout << endl << endl;
-	v1 = lista.ToVector();
-	for (auto i : v1) {
-		cout << i << " ";
+
+	/*lista.swap(1, 3);
+	V1 = lista.ToVector();
+	size = lista.GetCurrentSize();
+	for (int i = 0; i < size; i++) {
+			cout << V1[i] << " ";
 	}
+	cout << endl;*/
 
-	cout << "                     " << endl;
+	List<int>lista2;
 
+	lista2.Add(5);
+	lista2.Add(4);
+	lista2.Add(3);
+	lista2.Add(2);
+	lista2.Add(1);
 
-	v1 = lista2.ToVector();
-	for (auto i : v1) {
-		cout << i << " ";
+	lista.Merge(lista2);
+	V1 = lista.ToVector();
+	size = V1.size();
+	for (int i = 0; i < size; i++) {
+		cout << V1[i] << " ";
 	}
-
 }

@@ -54,6 +54,8 @@ public:
 
 	virtual void Clear() {
 		Node<T>* Deleter = HEAD;
+		if (HEAD == nullptr)
+			return;
 		while (HEAD->GetNext() != nullptr) {
 			HEAD = HEAD->GetNext();
 			delete Deleter;
@@ -85,7 +87,7 @@ public:
 	}
 	virtual vector<T> ToVector()const {
 		vector<T>result;
-		Node<T>* Displayer=HEAD;
+		Node<T>* Displayer=this->HEAD;
 		while (Displayer != nullptr) {
 			result.push_back(Displayer->GetData());
 			Displayer = Displayer->GetNext();
@@ -93,6 +95,56 @@ public:
 		return result;
 	}
 
+	void swap(int n1, int n2) {
+		Node<T>*ptr = this->HEAD;
+		Node<T>*ptr1=nullptr;
+		Node<T>*ptr2=nullptr;
+			int i = 1;
+			if (n1 > this->CurrentCount || n2 > this->CurrentCount)
+				return;
+			while (ptr) {
+				if (i == n1)
+					ptr1 = ptr;
+				if (i == n2)
+					ptr2 = ptr;
+				ptr = ptr->GetNext();
+				i++;
+			}
+			T var = ptr2->GetData();
+			ptr2->SetData(ptr1->GetData());
+			ptr1->SetData(var);
+	}
+
+	void Merge(List<T>&l1) {
+		Node<T>* S;
+		Node<T>* R;
+		Node<T>* L;
+		Node<T>* ptr1 = l1.HEAD;
+		Node<T>* ptr2 = this->HEAD;
+		if (!ptr1 || !ptr2)
+			return;
+		if (ptr1->GetData() <= ptr2->GetData())
+		{
+			S = ptr1;
+			L = ptr2;
+		}
+		else {
+			S = ptr2;
+			L = ptr1;
+		}
+
+		while (L) {
+			R = S->GetNext();
+			while ((R && R->GetData() <= L->GetData()))
+			{
+				S = R;
+				R = R->GetNext();
+			}
+			S->SetNext(L);
+			L = R;
+		}
+		l1.HEAD = nullptr;
+	}
 
 	~List() {
 		Clear();

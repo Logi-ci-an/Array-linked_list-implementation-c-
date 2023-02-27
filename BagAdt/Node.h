@@ -16,10 +16,10 @@ public:
 		Next = N;
 	}
 	T GetData() {
-		return Data;
+		return this->Data;
 	}
 	Node<T>* GetNext() {
-		return Next;
+		return this->Next;
 	}
 
 };
